@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://brij03583fg07"]
+
+[ext_resource type="Script" uid="uid://x2rdmjyr1ttw" path="res://scenes/ObjectiveArea.gd" id="1_2q46j"]
+[ext_resource type="Script" uid="uid://c7jkx4spunldr" path="res://scenes/GreenShip.gd" id="2_5bd2b"]
+[ext_resource type="PackedScene" uid="uid://4dcae4gpc0p3" path="res://scenes/SnowPlatform.tscn" id="2_th476"]
+[ext_resource type="PackedScene" uid="uid://2l8dbfsh07v1" path="res://scenes/GreenShip.tscn" id="3_th476"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bd2b"]
+size = Vector2(138.75, 79)
+
+[node name="NewLevel" type="Node2D" unique_id=296233262]
+
+[node name="GreenShip" parent="." unique_id=726284569 instance=ExtResource("3_th476")]
+position = Vector2(181, 254)
+script = ExtResource("2_5bd2b")
+
+[node name="PlatformSnow" type="Node2D" parent="." unique_id=248202243]
+
+[node name="SnowPlatform" parent="PlatformSnow" unique_id=672966881 instance=ExtResource("2_th476")]
+position = Vector2(120, 523)
+
+[node name="SnowPlatform2" parent="PlatformSnow" unique_id=1952522971 instance=ExtResource("2_th476")]
+position = Vector2(188, 523)
+
+[node name="SnowPlatform3" parent="PlatformSnow" unique_id=806844125 instance=ExtResource("2_th476")]
+position = Vector2(257, 523)
+
+[node name="ObjectiveArea" type="Area2D" parent="." unique_id=1584266089]
+script = ExtResource("1_2q46j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea" unique_id=67200569]
+position = Vector2(185, 138)
+shape = SubResource("RectangleShape2D_5bd2b")
+
+[connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]
